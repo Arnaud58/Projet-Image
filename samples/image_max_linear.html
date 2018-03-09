@@ -1,0 +1,30 @@
+<html>
+<head>
+<script lang="js" src="../tools.js"></script>
+<script lang="js" src="../filters/max_filter.js"></script>
+<script lang="js" src="../processing.js"></script>
+</head>
+<body>
+  <img autoplay loop src="../data/tambour.png" id="input" height="240" width="240"></img>
+  <canvas id="output" width="240" height="240"></canvas>
+	
+	<br></br>
+	<video autoplay loop src="../data/happy.mp4" id="input1" width="320" height="180"></video>
+	<canvas id="output1" width="320" height="180"></canvas>
+	
+  <script lang="javascript">
+    var _opt_options={};
+    var _task=new MaxTask(_opt_options)
+
+		var _proc=new processing("input",_task,"output");
+		var _proc1=new processing("input1",_task,"output1");
+		
+		var loop=function() {
+		  _proc.do_process();
+		_proc1.do_process();
+		  requestAnimationFrame(loop);
+		}
+		loop();
+  </script>
+</body>
+</html>

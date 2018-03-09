@@ -1,0 +1,23 @@
+<html>
+<head>
+	<script lang="js" src="../tools.js"></script>
+	<script lang="js" src="../filters/loupe_filters.js"></script>
+	<script lang="js" src="../processing.js"></script>
+</head>
+<body>
+    <img autoplay loop src="../data/tambour.png" id="input" height="240" width="240"></img>
+ 
+  <canvas id="output" width="320" height="240"></canvas>
+
+  <script lang="javascript">
+    var _opt_options={x:100,y:100,r:50};
+    var _task=new LoupeColorTask(_opt_options)
+    var _proc=new processing("input",_task,"output");
+    var loop=function() {
+      _proc.do_process();
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>

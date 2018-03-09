@@ -1,0 +1,38 @@
+<html>
+<head>
+<script lang="js" src="../tools.js"></script>
+<script lang="js" src="../features/meanImage.js"></script>
+<script lang="js" src="../processing.js"></script>
+</head>
+<body>
+    <img autoplay loop src="../data/tambour.png" id="input" height="240" width="240"></img>
+    <br></br>
+    <div id="output"></div>
+
+    <video autoplay loop src="../data/happy.mp4" id="input2" width="320" height="180"></video>
+    <br></br>
+    <div id="output2"></div>
+
+  <script lang="javascript">
+    var _output=document.getElementById("output");
+    var _opt_options={output:_output};
+    var _output2=document.getElementById("output2");
+    var _opt_options2={output:_output2};
+
+
+    var _task=new GetMeanPixel(_opt_options);
+    var _task2=new GetMeanPixel(_opt_options2);
+
+    var _proc=new processing("input",_task);
+    var _proc2=new processing("input2",_task2);
+    
+    var loop=function() {
+      _proc.do_process();
+      _proc2.do_process();
+      requestAnimationFrame(loop);
+    }
+    _output.addEventListener("playing",loop());
+    //loop();
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<script lang="js" src="../tools.js"></script>
+<script lang="js" src="../filters/inv_red_blue.js"></script>
+<script lang="js" src="../processing.js"></script>
+</head>
+<body>
+  <img autoplay loop src="../data/tambour.png" id="input" height="240" width="240"></img>
+  <!--<video autoplay loop src="../data/surprise.mp4" id="input" width="320" height="180"></video>
+ -->
+  <canvas id="output" width="320" height="240"></canvas>
+
+  <script lang="javascript">
+    var _opt_options={};
+    var _task=new InvRedBlueTask(_opt_options)
+    var _proc=new processing("input",_task,"output");
+    var loop=function() {
+      _proc.do_process();
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>

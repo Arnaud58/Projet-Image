@@ -1,0 +1,22 @@
+<html>
+<head>
+<script lang="js" src="../tools.js"></script>
+<script lang="js" src="../filters/black_white_filter.js"></script>
+<script lang="js" src="../processing.js"></script>
+</head>
+<body>
+  <video autoplay loop src="../data/happy.mp4" id="input" width="320" height="180"></video>
+  <canvas id="output" width="320" height="180"></canvas>
+
+  <script lang="javascript">
+    var _opt_options={gris:125};
+    var _task=new ToBlackAndWhiteTask(_opt_options)
+    var _proc=new processing("input",_task,"output");
+    var loop=function() {
+      _proc.do_process();
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+	<head>
+	  <script lang="js" src="../tools.js"></script>
+	  <script lang="js" src="../dataset/images.js"></script>
+	  <script lang="js" src="../features/generic.js"></script>
+	  <script lang="js" src="../features/pixels.js"></script>
+	  <script lang="js" src="../filters/loupe_filters.js"></script>
+		<script lang="js" src="../filters/inv_red_blue.js"></script>
+		<script lang="js" src="../filters/PoidRGB.js"></script>
+		<script lang="js" src="../filters/red_inf_filter.js"></script>
+	  <script lang="js" src="../metrics/generic.js"></script>
+	  <script lang="js" src="../metrics/pixels.js"></script>
+	  <script lang="js" src="../similarity/generic.js"></script>
+	  <script lang="js" src="../similarity/pixels.js"></script>
+	  <script lang="js" src="../effects/photo_fill.js"></script>
+		<script lang="js" src="../processing.js"></script>
+	  <script lang="js" src="../processing2.js"></script>
+		<script lang="js" src="../filters/perso.js"></script>
+	</head>
+	<body>
+		<video id="vdo" width="550" height="400"></video>
+		<canvas id="cvs" width="550" height="400"></canvas>
+		<br></br>
+		
+		
+			<script lang="javascript">
+			var _opt_options={x:100,y:100,r:50};
+
+			var vdo=document.getElementById("vdo");
+			var cvs=document.getElementById("cvs");
+			Tools.init_user_media(vdo,{});
+			
+			var _task=new PoidRGBTask(_opt_options);
+			var _proc=new processing("vdo",_task,"cvs");
+			var loop=function() {
+			  _proc.do_process();
+			  requestAnimationFrame(loop);
+			}
+			loop();
+			</script>
+	</body>
+</html>
